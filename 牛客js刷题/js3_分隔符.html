@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+            function _comma(number) {
+                // 补全代码
+                if(!String.prototype.splice) {
+                    String.prototype.splice = function(start, delCount, newSubStr) {
+                        return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount))
+                    }
+                }
+                String.prototype.splice = function(start, delCount, newSubStr) {
+                    return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount))
+                }
+                let str =  number + ""
+                let n = str.length
+                if (str.charAt(0) == '-') {
+                    n--
+                }
+                if (n <= 3) {
+                    return str
+                } else {
+                    let k = 3;
+                    for(let i = 0; i < n / 3 - 1; i++) {
+                        str = str.splice(-k, 0, ',')
+                        k++;
+                        k+=3
+                    }
+                    return str
+                }
+            
+            }
+
+            // 利用正则表达式来解决
+            function _comma2(number) {
+                let str = number.toString()
+                // (\d)是第一个捕获组，用于匹配一个数字
+                // (?:\d{3})+$) 是一个非捕获组，用于匹配连续的三个数字字符
+                // (?=...)是一个零宽度正向先行断言，表示匹配一个位置，这个位置后面满足断言中指定的条件。
+                // $1 第一个捕获组的内容
+                return str.replace(/(\d)(?=(?:\d{3})+$)/g,'$1,')
+            }
+
+            function _comma3(number) {
+                let arr = Math.abs(number).toString().split('').reverse();
+                let i = 3
+                while(i < arr.length) {
+                    arr.splice(i, 0, ',')
+                    i+=4
+                }
+                let str = arr.reverse().join('')
+                return number < 0 ? '-' + str : str
+
+            }
+            console.log(_comma2(-1234))
+            console.log(_comma2(123456484545))
+        </script>
+</body>
+</html>
