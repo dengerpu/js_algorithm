@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+            const _createArray = (number) => {
+                // 补全代码
+                // return new Array(number).fill(number)
+                return Array.from({length: number}, () => {
+                    return number
+                })
+            }
+            console.log(_createArray(3))
+    </script>
+</body>
+</html>
