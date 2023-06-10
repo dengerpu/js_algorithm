@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+            const _shouldUpdate = (oldVersion, newVersion) => {
+                // 补全代码
+                const old_version = oldVersion.split('.')
+                const new_version = newVersion.split('.')
+                if (old_version.length === new_version.length) {
+                    for(let i = 0; i < old_version.length; i++) {
+                        if (new_version[i] > old_version[i]) {
+                            return true
+                        }
+                    }
+                } else {
+                    return new_version.length > old_version.length
+                }
+                return false
+            }
+            // ES6扩展运算符比较
+            const _shouldUpdate2 = (oldVersion, newVersion) => {
+                // 补全代码
+                const old_version = oldVersion.split('.')
+                const new_version = newVersion.split('.')
+                return new_version > old_version
+            }
+            // 转为字符串比较
+            const _shouldUpdate3 = (oldVersion, newVersion) => {
+                // 补全代码
+                const old_version = oldVersion.split('.').join('')
+                const new_version = newVersion.split('.').join('')
+                return new_version > old_version
+            }
+        </script>
+</body>
+</html>
