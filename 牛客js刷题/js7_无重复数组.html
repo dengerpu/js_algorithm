@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            const _getUniqueNums = (start,end,n) => {
+                // 补全代码
+                let arr = []
+                let i = 0
+                while(i < n) {
+                    let num = Math.floor(Math.random()*(end + 1 - start)) + start
+                    if (!arr.includes(num)) {
+                        arr.push(num)
+                        i++   
+                    }
+                }
+                return arr
+            }
+
+            const _getUniqueNums2 = (start,end,n) => {
+                // 补全代码
+                let arr = new Set()
+                while(arr.size < n) {
+                    let num = Math.floor(Math.random()*(end + 1 - start)) + start
+                    arr.add(num)
+                }
+                return [...arr]
+            }
+            console.log(_getUniqueNums2(2, 10, 5))
+        </script>
+</body>
+</html>
