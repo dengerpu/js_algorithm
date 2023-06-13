@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+            const _delete = (array,index) => {
+                // 补全代码
+                let arr = array.filter((item, index1) => {
+                    return index1 != index
+                })
+                return arr
+            }
+            // 使用splice
+            const _delete2 = (array,index) => {
+                // 补全代码
+                let arr = [...array]
+                arr.splice(index, 1)
+                return arr
+            }
+            const arr = [1,2,3,4,5]
+            console.log(_delete2(arr, 1))
+        </script> 
+</body>
+</html>
