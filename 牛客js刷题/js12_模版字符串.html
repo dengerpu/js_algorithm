@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <h2></h2>
+
+        <script>
+            var person = {
+                level: '2',
+                name: '小丽',
+                registTime: '2021-11-01',
+            }
+            var h2 = document.querySelector('h2');
+            // 补全代码
+            function getDifferDay(date) {
+                var date_1 = Date.now()
+                var date_2 = Date.parse(date)
+
+                var diffDate = date_1 - date_2
+                var totalDays = Math.floor(diffDate / (1000 * 3600 * 24))
+                return totalDays
+            }
+            h2.innerHTML = `尊贵的牛客网${person.level}级用户${person.name}您好，您已经注册牛客网${getDifferDay(person.registTime)}天啦~`
+        </script>    
+</body>
+</html>
