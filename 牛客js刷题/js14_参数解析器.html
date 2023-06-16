@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            const _getParams = (url) => {
+                // 补全代码
+                let param = url.split("?")[1]
+                let obj = {}
+                let params = param.split('&')
+                params.forEach(item => {
+                    let temp = item.split('=')
+                    obj[temp[0]] = temp[1] 
+                })
+                return obj
+            }
+            // 利用正则表达式
+            const _getParams2 = (url) => {
+                let arr = url.match(/(\w+)=(\w+)/gi)
+                let obj = {}
+                arr.map(item => {
+                    let [key, value] = item.split('=')
+                    obj[key] = value
+                })
+                return obj
+            }
+
+            console.log(_getParams2('https://nowcoder.com/online?id=1&salas=1000'))
+
+        </script>
+</body>
+</html>
