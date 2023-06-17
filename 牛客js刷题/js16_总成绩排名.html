@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+        const _rank = array => {
+            // 补全代码
+            return array.sort((a, b) => {
+                return (b.chinese + b.math + b.english) - (a.chinese + a.math + a.english)
+            })
+        }
+        let grade = [{name: 'nowcoder1',chinese: 73,math: 80,english: 72},{name: 'nowcoder2',chinese: 59,math: 53,english: 36},{name: 'nowcoder3',chinese: 94,math: 96,english: 94}]
+        console.log(_rank(grade))
+        </script>
+</body>
+</html>
