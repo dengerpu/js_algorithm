@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <ul id="ul">
+            
+        </ul>
+        <script type="text/javascript">
+            const _createPage = (allItem, pageItem) => {
+                // 补全代码
+                // let count = allItem % pageItem == 0 ? allItem / pageItem : allItem / pageItem + 1
+                let count = Math.ceil(allItem / pageItem) // 向上取整
+                let ul = document.getElementById('ul')
+                for (let i = 1; i <= count; i++) {
+                    let li = document.createElement('li')
+                    li.innerHTML = i
+                    ul.appendChild(li)
+                }
+            }
+            _createPage(13, 2)
+        </script> 
+</body>
+</html>
