@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            const _searchStrIndexOf = (str, target) => {
+                // 补全代码
+                let n = target.length
+                let count = 0
+                for(let i = 0; i < str.length - n + 1; i++) {
+                    if ((str.slice(i,i+n)) === target) {
+                        count++
+                    }
+                }
+                return count
+            }
+            // 使用split分隔
+            const _searchStrIndexOf2 = (str, target) => {
+                return str.split(target).length - 1
+            }
+            // 正则表达式
+            const _searchStrIndexOf3 = (str, target) => {
+                let reg = new RegExp(target, 'g')
+                return str.match(reg).length
+            }
+            // 使用indexOf
+            const _searchStrIndexOf4 = (str, target) => {
+                let index = str.indexOf(target)
+                let count = 0
+                while(index > -1) {
+                    index = str.indexOf(target, index + 1)
+                    count++
+                }
+                return count
+            }
+            console.log(_searchStrIndexOf4('sdffgfdfdgfdw', 'fd'))
+        </script>
+</body>
+</html>
