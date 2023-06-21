@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            // 使用toString() + split()
+            const _flatten = arr => {
+                // 补全代码
+                return arr.toString().split(',').map(item => Number(item))
+            }
+            // reduce 实现
+            const _flatten2 = arr => {
+                // 补全代码
+                return arr.reduce((target, item) => {
+                    return target.concat(Array.isArray(item) ? _flatten2(item) : item)
+                }, [])
+            }
+            // join() + split() 实现
+            const _flatten3 = arr => {
+                // 补全代码
+                return arr.join(',').split(',').map(item => Number(item))
+            }
+
+            // 递归
+            const _flatten4 = arr => {
+                // 补全代码
+                let res = []
+                arr.forEach(item => {
+                    if (Array.isArray(item)) {
+                        res = res.concat(_flatten3(item))
+                    }else {
+                        res.push(item)
+                    }
+                })
+                return res
+            }
+
+            console.log(_flatten4([1,[2,[3,[4]]]]))
+        </script>
+</body>
+</html>
