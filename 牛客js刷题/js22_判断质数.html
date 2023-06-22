@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+            // 补全代码
+            // 这里参数得是number 或者里面的number用this代替
+             Number.prototype._isPrime = function(number) {
+                if (number <= 1) {
+                    return false
+                }
+                for(let i = 2; i <= number-1; i++) {
+                    if (number % i == 0) {
+                        return false
+                    }
+                }
+                return true
+             }
+            console.log((2)._isPrime())
+        </script>
+</body>
+</html>
