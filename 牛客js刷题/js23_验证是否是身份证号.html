@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            const _isCard = number => {
+                // 补全代码
+                let reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
+                return reg.test(number)
+            }
+
+            console.log(_isCard('21062319980907888X'))
+        </script>
+</body>
+</html>
