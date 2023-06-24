@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            const _isSameSet = (s1, s2) => {
+                // 补全代码
+                 if (s1.size != s2.size) {
+                    return true
+                 }else {
+                    for(let key of s1.keys()) {
+                        if (!s2.has(key)) {
+                            return false
+                        }
+                    }
+                 }
+                 return true
+            }
+
+             const _isSameSet = (s1, s2) => {
+                // 补全代码
+                 if (s1.size != s2.size) {
+                    return true
+                 }
+                   
+                return [...s1].every(item => s2.has(item))
+            }
+        </script>
+</body>
+</html>
