@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <p>1</p>
+        <p>1</p>
+        <script type="text/javascript">
+            const _elementKey = () => {
+                // 补全代码
+                const map = new Map()
+                let ps = document.getElementsByTagName('p')
+                for(let i = 0; i < ps.length; i++) {
+                    map.set(ps[i], ps[i].innerHTML)
+                }
+                // console.log([...map])
+            }
+            _elementKey()
+        </script>   
+</body>
+</html>
