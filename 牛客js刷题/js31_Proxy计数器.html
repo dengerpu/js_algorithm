@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+            let count = 0
+            const _proxy = object => {
+                // 补全代码
+                return new Proxy(object,{
+                    get(target, prop, receiver) {
+                        Reflect.get(target, prop, receiver)
+                        if (prop in target) {
+                            count ++
+                        } else {
+                            count --
+                        }
+                    }
+                })
+            }
+
+            var me = {name:'me'};
+            var proxy = _proxy(me);
+            proxy.name;
+            proxy.name;
+            proxy.name;
+            proxy.name;
+            proxy.name;
+            proxy.name;
+            proxy.name;
+            console.log(count)
+        </script> 
+</body>
+</html>
