@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+            // 方法一：字符串反转
+            const _isPalindrome = string => {
+                // 补全代码
+                let arr = string.split("")
+                return arr.join('') === arr.reverse().join('')
+            }
+            const _isPalindrome2 = string => {
+                let length = string.length
+                for(let i = 0; i < length / 2; i++) {
+                    if (string.charAt(i) != string.charAt(length - i - 1)) {
+                        return false
+                    }
+                }
+                return true
+            }
+            console.log(_isPalindrome2("abcde"))
+        </script> 
+</body>
+</html>
