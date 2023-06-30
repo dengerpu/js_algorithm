@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+            let data = [
+                {name: 'nowcoder1'},
+                {name: 'nowcoder2'}
+            ]
+            
+            const _api = string => {
+                // 补全代码
+                let arr = string.split('?')
+                if (arr[0] == 'get') {
+                    return data
+                } else if (arr[0] == 'update') {
+                    let param_arr = arr[1].split('&')
+                    let name = param_arr[1].split('=')[1]
+                    data.forEach(item => {
+                        item.name = name
+                    })
+                } else {
+                    return null
+                }
+            }
+            _api('update?name=xxx&to=yyy')
+            console.log(data)
+        </script>
+</body>
+</html>
