@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <body>
+        <table>
+            <thead>
+                <caption>
+                    商品
+                </caption>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>炸鸡</td>
+                    <td>28元</td>
+                    <td><button id="zjtaiduola">-</button></td>
+                    <td><span id="zjsl">0</span></td>
+                    <td><button id="zjtaishaola">+</button></td>
+                </tr>
+                <tr>
+                    <td>可乐</td>
+                    <td>5元</td>
+                    <td><button id="kltaiduola">-</button></td>
+                    <td><span id="klsl">0</span></td>
+                    <td><button id="kltaishaola">+</button></td>
+                </tr>
+                <tr>
+                    <td>总价：</td>
+                    <td><span id="total">0</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <script type="text/javascript">
+            // 补全代码
+            // 计算总价也可以采用两个价格乘以单价之和的方式
+            let total_span = document.querySelector("#total")
+            let total_value = Number(total_span.innerText)
+            function setClickFun(sub, span, add, price) {
+                let span_dom = document.querySelector(span)
+                let sub_btn = document.querySelector(sub)
+                let add_btn = document.querySelector(add)
+                sub_btn.onclick = function() {
+                    total_value = Number(total_span.innerText)
+                    let value = Number(span_dom.innerText) - 1
+                    if (value < 0) {return}
+                    span_dom.innerText = value
+                    total_span.innerText = total_value - price
+                }
+                add_btn.onclick = function() {
+                    total_value = Number(total_span.innerText)
+                    let value = Number(span_dom.innerText) + 1
+                    span_dom.innerText = value
+                    total_span.innerText = total_value + price
+                }
+            }
+            setClickFun('#zjtaiduola', '#zjsl', '#zjtaishaola', 28)
+            setClickFun('#kltaiduola', '#klsl', '#kltaishaola', 5)
+
+            document.querySelector('#zjtaishaola').click();
+            document.querySelector('#kltaishaola').click();
+            console.log(document.querySelector('#total').innerText === '33')
+        </script>
+</body>
+</html>
