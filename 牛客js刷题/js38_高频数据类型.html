@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+            const _findMostType = array => {
+                // 补全代码
+                const map = new Map()
+                let max = 0 // 同时记录最大值
+                array.forEach(item => {
+                    let key = typeof item
+                    if (map.has(key)) {
+                        map.set(key, map.get(key) + 1)
+                    } else {
+                        map.set(key, 1)
+                    }
+                    if(map.get(key) > max) {
+                        max = map.get(key)
+                    }
+                })
+                const arr = []
+                for(let key of map.keys()) {
+                    if (map.get(key) == max) {
+                        arr.push(key)
+                    }
+                }
+                return [...arr, max]
+            }
+
+            console.log(_findMostType([0,0,'','']))
+
+        </script>
+</body>
+</html>
