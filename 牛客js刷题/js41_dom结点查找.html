@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+       /* 填写样式 */
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <ul>
+            <li class="li">li</li>
+        </ul>
+        <span class="span">span</span>
+    </div>
+    <!-- 填写标签 -->
+    <script type="text/javascript">
+        // 填写JavaScript
+        function commonParentNode(oNode1, oNode2) {
+            let node = oNode1
+            while(true) {
+                if (node.contains(oNode2)) {
+                    return node
+                }
+                node = node.parentNode
+            }
+        }
+        cons t parent = document.querySelector(".parent")
+        const li = document.querySelector(".li")
+        const span = document.querySelector(".span")
+        console.log(commonParentNode(parent, span))
+    </script>    
+</body>
+</html>
