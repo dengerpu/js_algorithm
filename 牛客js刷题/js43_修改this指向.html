@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+       <!-- 填写标签 -->
+    <script type="text/javascript">
+        // 填写JavaScript
+        // fn.bind： 不会立即调用，而是返回一个绑定后的新函数。
+        function bindThis(f, oTarget) {
+            return f.bind(oTarget)
+        }
+        // fn.call：立即调用，返回函数执行结果，this指向第一个参数，后面可有多个参数，并且这些都是fn函数的参数。
+        function bindThis(f, oTarget) {
+            return function() {
+                return f.call(oTarget, ...arguments)
+            }
+        }
+        // fn.apply：立即调用，返回函数的执行结果，this指向第一个参数，第二个参数是个数组，这个数组里内容是fn函数的参数。
+        function bindThis(f, oTarget) {
+            return function() {
+                return f.apply(oTarget, arguments)
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
