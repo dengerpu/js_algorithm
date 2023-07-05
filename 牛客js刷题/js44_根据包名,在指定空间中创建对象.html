@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+        function namespace(oNamespace, sPackage) {
+            let arr = sPackage.split('.')
+            let temp = oNamespace
+            for (let i = 0; i < arr.length; i++) {
+                let key = arr[i]
+                if (temp.hasOwnProperty(key) && typeof temp[key] == 'object') {
+                    temp = temp[key]
+                }else {
+                    temp[key] = {}
+                    temp = temp[key]
+                }
+            }
+        }
+
+        function namespace2(oNamespace, sPackage) {
+            let temp = oNamespace
+            sPackage.split('.').forEach(item => {
+                temp = temp[item] = Object.assign({}, temp[item])
+            })
+        }
+
+        function namespace3(oNamespace, sPackage) {
+            sPackage.split('.').reduce((currentObj,key) => {
+                if (typeof currentObj[key] != 'object') {
+                    currentObj[key] = {}
+                }
+                return currentObj[key]
+            }, oNamespace)
+            return oNamespace
+        }
+        console.log(namespace3({a: {test: 1, b: 2}}, 'a.b.c.d'))
+    </script>
+</body>
+</html>
