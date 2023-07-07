@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 提交没通过(.padStart(2,0)识别不了)
+        function formatDate2(date, formatDate) {
+            const days = ['日','一','二','三','四','五','六']
+            let obj
+            const yyyy = date.getFullYear()
+            const MM = (date.getMonth() + 1).toString().padStart(2,0)
+            const dd = date.getDate().toString().padStart(2,0)
+            const HH = date.getHours().toString().padStart(2,0)
+            const mm = date.getMinutes().toString().padStart(2,0)
+            const ss = date.getSeconds().toString().padStart(2,0)
+            const w = date.getDay()
+            obj = {yyyy,MM,dd,HH,mm,ss,w }
+            Object.keys(obj).forEach(item => {
+                if (item === 'w') {
+                    formatDate = formatDate.replace(item, days[obj[item]])
+                }else {
+                    formatDate = formatDate.replace(item, obj[item])
+                }
+            })
+            return formatDate
+        }
+
+        function formatDate(date, format) {
+            function addZero(val) {
+                if (val < 10) {
+                    return '0' + val
+                }
+                return val
+            }
+            let obj = {
+                'yyyy': date.getFullYear(),
+                'yy': date.getFullYear()%100,
+                'MM': addZero(date.getMonth() + 1),
+                'M': date.getMonth() + 1,
+                'dd': addZero(date.getDate()),
+                'd': date.getDate(),
+                'HH': addZero(date.getHours()),
+                'H': date.getHours(),
+                'hh': addZero(date.getHours() % 12),
+                'h': date.getHours() % 12,
+                'mm': addZero(date.getMinutes()),
+                'm': date.getMinutes(),
+                'ss': addZero(date.getSeconds()),
+                's': date.getSeconds(),
+                'w': function () {
+                    arr = ['日', '一', '二', '三', '四', '五', '六']
+                    return arr[date.getDay()]
+                }()
+            }
+            for(let key in obj) {
+                format = format.replace(key, obj[key])
+            }
+            return format
+        }
+
+        function a() { 
+            var localOffset = new Date().getTimezoneOffset()*60*1000; 
+            var sResult = formatDate(new Date(1409894060000+localOffset), 'yyyy-MM-dd HH:mm:ss 星期w'); 
+            return sResult === '2014-09-05 05:14:20 星期五'; 
+        }
+        console.log(a())
+
+        // formatDate(new Date(1409894060000), 'yyyy-MM-dd HH:mm:ss 星期w')
+    </script>
+</body>
+</html>
