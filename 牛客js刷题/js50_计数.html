@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function count(arr, item) {
+            return arr.reduce((pre, curr) => {
+                if (curr == item) {
+                    pre++
+                }
+                return pre
+            }, 0)
+        }
+        function count2(arr, item) {
+            return arr.filter(curr => {
+                return curr == item
+            }).length
+        }  
+        console.log(count2([1, 2, 4, 4, 3, 4, 3], 4))
+    </script>
+</body>
+</html>
