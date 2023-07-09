@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 利用map来存储
+        function duplicates(arr) {
+            let result = []
+            let map = new Map()
+            arr.forEach(item => {
+               if (map.has(item)) {
+                map.set(item, map.get(item) + 1)
+               }else {
+                map.set(item, 1)
+               }
+            })
+            // 也可以用forEach
+            for(let key of map.keys()) {
+                if (map.get(key) > 1) {
+                    result.push(key)
+                }
+            }
+            return result
+        }
+        function duplicates2(arr) {
+            let result = []
+            arr.forEach(item => {
+                if (arr.indexOf(item) != arr.lastIndexOf(item) && result.indexOf(item) == -1) {
+                    result.push(item)
+                }
+            })
+            return result
+        }
+
+         function duplicates3(arr) {
+            const set = new Set()
+            let result = new Set()
+            arr.forEach(item => {
+                if (set.has(item)) {
+                    result.add(item)
+                }else {
+                    set.add(item)
+                }
+            })
+            return [...result]
+         }
+        console.log(duplicates3([1, 2, 4, 4, 3, 3, 1, 5, 3]))
+    </script>
+</body>
+</html>
