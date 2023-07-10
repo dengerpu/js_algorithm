@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    
+    function count(start, end) {
+      console.log(start)
+      let timer = setInterval(() => {
+        if (start < end) {
+            console.log(++start)
+        } else {
+            clearInterval(timer)
+        }
+      }, 100)
+      return {
+        cancel() {
+            clearInterval(timer)
+        }
+      }
+    }
+
+    count(1, 10)
+   
+    </script>
+</body>
+</html>
