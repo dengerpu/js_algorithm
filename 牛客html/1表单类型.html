@@ -6,11 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<input>
     <!-- // 请依次写出以下类型的输入框。
     // 1. 类型为密码，默认值为"nowcoder"
     // 2. 类型为复选框，且状态为已勾选 -->
     <input type="password" value="nowcoder"></input>
     <input type="checkbox" checked></input>
+
+    <!-- 按钮 -->
+    <input type="button" name="button" value="button里面显示的内容"></input>
+    <!-- 复选框 -->
+    <input type="checkbox">复选框</html>
+    <!-- 颜色框 -->
+    <input type="color" value='#ffffff'/>
+    <!-- 日期 -->
+    <input type="date"/>
+    <!-- 日期加时间 -->
+    <input type="datetime-local"/>
+    <!-- 邮箱 -->
+    <input type="email"/>
+    <!-- 文件 -->
+    <input type="file" accept="image/*, text/*" multiple>
+    <!-- 隐藏输入框 -->
+    <input type="hidden" value="123">
+    <!-- 图片输入框-->
+    <input type="image"  alt="Login" src="https://interactive-examples.mdn.mozilla.net/media/examples/login-button.png"/>
+    <!-- 年月输入框 -->
+    <input type="month"/>
+    <!-- 数字输入框 -->
+    <input type="number"/>
+    <!-- 密码框 -->
+    <input type="password" value="123456"/>
+    <!-- 单选框 -->
+    <input type="radio" checked="true" value="选周后的内容">单选框</input>
+    <!-- 数值范围 -->
+    <input type="range" min="0" max="100" value="90" step="10"/>
+    <!-- 重置，放在form里面，会充值form表单里面的内容 -->
+    <input type="reset" value="重置按钮">
+    <!-- 搜索功能 -->
+    <input type="search" name="search"/>
+    <!-- 提示功能 -->
+    <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice">
+
+    <datalist id="ice-cream-flavors">
+        <option value="Chocolate">
+        <option value="Coconut">
+        <option value="Mint">
+        <option value="Strawberry">
+        <option value="Vanilla">
+    </datalist>
+
+    <!-- 提交功能 -->
+    <input type="submit" value="提交"/>
+    <!-- 电话 -->
+    <input type="tel"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+    <!-- 时间 -->
+    <input type="time"  min="09:00" max="18:00" value="13:00" required/>
+    <!-- url -->
+    <input type="url" name="url" id="url"
+       placeholder="https://example.com"
+       pattern="https://.*" size="30"
+       required>
+    <!-- week -->
+    <input type="week" name="week" id="camp-week"
+       min="2018-W18" max="2018-W26" required>
 </body>
 </html>
