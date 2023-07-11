@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function argsAsArray(fn, arr) {
+            return fn(...arr)
+        }
+        function argsAsArray2(fn, arr) {
+            return fn.call(this, ...arr)
+        }
+        function argsAsArray3(fn, arr) {
+            return fn.apply(this, arr)
+        }
+        const res = argsAsArray3( function (greeting, name, punctuation) {
+            return greeting + ', ' + name + (punctuation || '!');
+        }, ['Hello', 'Ellie', '!'])
+        console.log(res)
+    </script>
+</body>
+
+</html>
