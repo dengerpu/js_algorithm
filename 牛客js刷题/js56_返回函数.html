@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 闭包
+        function functionFunction(str) {
+            return function() {
+                return str + "， " + arguments[0]
+            }
+            // return function(argument) {
+            //     return str + "， " + argument
+            // }
+        }
+        // 
+        function functionFunction2(str) {
+            let arr = []
+            function fn(str){
+                arr.push(str)
+                return arr.join(', ')
+            }
+            fn(str)
+            return fn
+        }
+        // 柯里化
+        function functionFunction3(str) {
+            // 字符串拼接函数
+            function strAdd() {
+                return Array.prototype.join.call(arguments,', ')
+            }
+
+            // 柯里化工具函数
+            function curry(fn, argLength) {
+                return function curried(...args) {
+                    if(args.length >= argLength) {
+                        return fn.apply(this, args)
+                    } else {
+                        return function(...args2) {
+                            return curried.apply(this, args.concat(args2))
+                        }
+                    }
+                }
+            }
+            // 将字符串函数柯里化，目标参数长度为2（也可以是其他长度）
+            // 并进行初次调用
+            return curry(strAdd, 2)(str)
+        }
+        console.log(functionFunction3('Hello')('world'))
+    </script>
+</body>
+
+</html>
