@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function makeClosures(arr, fn) {
+            const result = []
+            arr.forEach((item, i) => {
+                result[i] = fn.bind(this, item)
+            })
+            return result
+        }
+        
+        function makeClosures(arr, fn) {
+            return arr.map(item => {
+                return function() {
+                    return fn(item)
+                }
+            })
+        }
+
+        var arr = [1, 2, 3];
+        var fn = function (x) {
+            return x * x;
+        }
+        var result = makeClosures(arr, fn);
+        console.log(fn(arr[1]))
+        console.log(result[1]())
+    </script>
+</body>
+
+</html>
