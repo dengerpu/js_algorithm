@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 严格限制了每次返回的函数只能传入一个参数
+        function curryIt(fn) {
+            const args = []
+            function curriedFn(arg) {
+                args.push(arg)
+                if(args.length >= fn.length) {
+                    return fn.apply(this, args)
+                } else {
+                    return function(args2) {
+                        return curriedFn.call(this, args2)
+                    }
+                }
+            }
+            return curriedFn
+        }
+        // var fn = function (a, b, c) {return a + b + c}
+        // console.log(curryIt(fn)(1)(2)(3))
+        
+        function curryIt2(fn) {
+            let args = []
+            // 声明一个数组来累计参数，等到参数个数符合fn函数的参数个数的时候直接调fn函数结束这次函数调用
+            return result = function(arg) {
+                args.push(arg)
+                if(args.length >= fn.length) {
+                    return fn.apply(this, args)
+                } else {
+                    return result
+                }
+            }
+        }
+
+        function curryIt3(fn) {
+            return a => b => c => fn(a,b,c)
+        }
+ 
+
+        var fn = function (a, b, c) {return a + b + c};     
+        console.log(curryIt(fn).length);
+    </script>
+</body>
+
+</html>
