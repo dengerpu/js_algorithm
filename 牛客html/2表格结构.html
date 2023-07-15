@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 请写出具有表格标题为"nowcoder"的2行3列表格结构。 -->
+    <table>
+        <caption>nowcoder</caption>
+        <!-- <thead>
+            <tr>
+                <th colspan="3">nowcoder</th>
+            </tr>
+        </thead> -->
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>含有表头的表格</p>
+    <table>
+        <tr>
+            <th>姓</th>
+            <th>名</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>Doe</td>
+        </tr>
+        <tr>
+            <td>Jane</td>
+            <td>Doe</td>
+        </tr>
+    </table>
+
+    <p>含有表头、表尾和表格主体的表格</p>
+    <table>
+        <thead>
+            <tr>
+                <th>表头内容 1</th>
+                <th>表头内容 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>表格主体内容 1</td>
+                <td>表格主体内容 2</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>表尾内容 1</td>
+                <td>表尾内容 2</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <p>有列组的表格</p>
+    <table>
+        <colgroup span="4"></colgroup>
+        <tr>
+            <th>国家</th>
+            <th>首都</th>
+            <th>人口数量</th>
+            <th>语言</th>
+        </tr>
+        <tr>
+            <td>美国</td>
+            <td>华盛顿</td>
+            <td>3.09 亿</td>
+            <td>英语</td>
+        </tr>
+        <tr>
+            <td>瑞典</td>
+            <td>斯德哥尔摩</td>
+            <td>900 万</td>
+            <td>瑞典语</td>
+        </tr>
+    </table>
+
+    <p>有列组和列的表格</p>
+    <table>
+        <colgroup>
+            <col style="background-color: #0f0" />
+            <col span="2" />
+        </colgroup>
+        <tr>
+            <th>青柠</th>
+            <th>柠檬</th>
+            <th>橘子</th>
+        </tr>
+        <tr>
+            <td>绿色</td>
+            <td>黄色</td>
+            <td>橙色</td>
+        </tr>
+    </table>
+</body>
+
+</html>
