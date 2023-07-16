@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // toString
+        // Number.toString([radix]):
+        // 返回指定 Number 对象的字符串表示形式；
+        // radix指定要用于数字到字符串的转换的基数(从2到36)。如果未指定 radix 参数，则默认值为 10
+        function valueAtBit(num, bit) {
+           let num2String = num.toString(2)
+           return num2String[num2String.length - bit]
+        }
+
+        // 方法二 位运算
+        function valueAtBit2(num, bit) {
+            return (num >> (bit - 1)) & 1
+        }
+
+        // 方法三 手动实现
+        function valueAtBit3(num, bit) {
+            let arr = []
+            while(num > 0) {
+                arr.push(num % 2)
+                num = Math.floor(num / 2)
+            }
+            return arr[bit - 1] 
+        }
+
+        console.log(valueAtBit3(128,8))
+    </script>
+</body>
+
+</html>
