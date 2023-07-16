@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 注意，箭头函数没有this。如果把sayIt写成箭头函数，那么内部的this就会变成其所在作用域的调用者，
+        // 而对象的大括号不算做作用域，故就变成了window，就会出错。
+        function createModule(str1, str2) {
+            return {
+                greeting: str1,
+                name: str2,
+                sayIt: function() {
+                    return this.greeting + ", " + this.name
+                }
+            }
+        }
+        var o = createModule('hello', 'matt');     
+        o.name = 'katniss';     
+        o.greeting = 'hi';     
+        console.log(o.sayIt()); 
+
+    </script>
+</body>
+</html>
