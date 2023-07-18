@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function multiply(a, b) {
+            // 获取小数后面的位数
+            function getAccuracy(num) {
+                const len = num.toString().indexOf('.')
+                return len === -1 ? 0 : num.toString().length - len - 1
+            }
+            const fixed = Math.max(getAccuracy(a) + getAccuracy(b)) 
+            return (a*b).toFixed(fixed)
+        }
+        console.log(multiply(3, 0.0001))
+    </script>
+</body>
+
+</html>
