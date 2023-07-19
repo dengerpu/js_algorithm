@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function iterate(obj) {
+            let result = []
+            for(let key in obj) {
+                if(!obj.hasOwnProperty(key) && key in obj) {
+                    // console.log('在原型上')
+                    continue
+                }else {
+                    result.push(key + ": " + obj[key])
+                }
+            }
+            return result
+        }
+        
+        var C = function() {this.foo = 'bar'; this.baz = 'bim';}; 
+        C.prototype.bop = 'bip'; 
+        console.log(iterate(new C()));
+    </script>
+</body>
+
+</html>
