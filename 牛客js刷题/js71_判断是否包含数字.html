@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function containsNumber(str) {
+            let reg = /\d+/
+            return reg.test(str)
+        }
+        function containsNumber2(str) {
+            let reg = /[0-9]/g
+            return reg.test(str)
+        }
+        function containsNumber3(str) {
+            for(let i = 0; i < 10; i++) {
+                if(str.indexOf(i) != -1) {
+                    return true
+                }
+            }
+            return false
+        }
+        function containsNumber4(str) {
+            // const arr = str.split('')
+            // const arr = [...str]
+            const arr = Array.from(str)
+            return arr.some(item => {
+                return !isNaN(item)
+            }) 
+        }
+        console.log(containsNumber4('abc'))
+    </script>
+</body>
+
+</html>
