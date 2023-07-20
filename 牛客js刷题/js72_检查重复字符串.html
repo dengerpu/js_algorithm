@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function containsRepeatingLetter(str) {
+            for(let i = 1; i < str.length; i++) {
+                if(str[i] === str[i-1] && /[a-zA-Z]/.test(str[i])) {
+                    return true
+                }
+            }
+            return false
+        }
+        function containsRepeatingLetter2(str) {
+            // \1: 这是一个反向引用，它引用了第一个捕获组（即括号内的内容）。\1表示与第一个捕获组相同的内容。
+            // 因此，这里表示匹配前面捕获组所匹配的内容的重复出现。
+            return /([a-zA-Z])\1/.test(str)
+        }
+        console.log(containsRepeatingLetter('rattler'))
+    </script>
+</body>
+
+</html>
