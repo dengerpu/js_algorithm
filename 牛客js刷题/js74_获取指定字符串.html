@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function captureThreeNumbers(str) {
+            let reg = /(\d{3})/g
+            // if(str.match(reg) == null) {
+            //     return false
+            // } else {
+            //     return str.match(reg)[0]
+            // } 
+            return (str.match(reg) && str.match(reg)[0]) || false
+        }
+        function captureThreeNumbers2(str) {
+            let reg = /\d{3}/
+            console.log(reg.exec(str))
+            return reg.exec(str) ? reg.exec(str)[0] : false
+        }
+        console.log(captureThreeNumbers2('987654321'))
+    </script>
+</body>
+
+</html>
