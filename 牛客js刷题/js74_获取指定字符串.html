@@ -21,7 +21,6 @@
         }
         function captureThreeNumbers2(str) {
             let reg = /\d{3}/
-            console.log(reg.exec(str))
             return reg.exec(str) ? reg.exec(str)[0] : false
         }
         console.log(captureThreeNumbers2('987654321'))
