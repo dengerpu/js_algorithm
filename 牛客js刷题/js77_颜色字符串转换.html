@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function rgb2hex(sRGB) {
+            const reg = /^rgb\((.*)\)$/
+            if(!reg.test(sRGB)) {
+                return sRGB
+            }
+            const arr = sRGB.match(reg)[1].split(',').map(item => {
+                return item.trim()
+            })
+            if(arr.length !== 3) {
+                return arsRGB
+            }
+            let str = '#'
+            arr.forEach(item => {
+                str += getHex(item)
+            })
+            return str
+        }
+        function getHex(num) {
+            let str = ''
+            let n = parseInt(num)
+            if(n == 0) return '00'
+            while(n != 0) {
+                str += Hex(n % 16)
+                n = parseInt(n / 16)
+            }
+            if(str.length != 2) {
+                str = '0' + str
+            }
+            return str.split('').reverse().join('')
+        }
+        function Hex(num) {
+            switch(num) {
+                case 10: return 'a';
+                case 11: return 'b';
+                case 12: return 'c';
+                case 13: return 'd';
+                case 14: return 'e';
+                case 15: return 'f';
+                default: return num
+            }
+        }
+
+        // 方法2
+        function rgb2hex2(sRGB) {
+            try {
+                return eval(sRGB)
+            } catch {
+                return sRGB
+            }
+        }
+        function rgb(r,g,b) {
+            let rH = r.toString(16)
+            let gH = g.toString(16)
+            let bH = b.toString(16)
+            rH = rH.length == 1 ? '0' + rH : rH
+            gH = gH.length == 1 ? '0' + gH : gH
+            bH = bH.length == 1 ? '0' + bH : bH
+            return '#' + rH + gH + bH
+        }
+        console.log(rgb2hex2('rgb(255,255,255)'))
+    </script>
+</body>
+
+</html>

@@ -19,7 +19,6 @@
         function isUSD2(str) {
             // 不是以$开头，返回false
             if(str.slice(0,1) != '$') return false
-            console.log(str.split('.').length)
             // 如果有小数点，小数点后面不是数字或者数字的位数不是两位，返回false
             if(str.split('.').length > 1 && (!str.split('.')[1] || Number(str.split('.')[1]).toString() ==='NaN' || str.split('.')[1].length !=2)) {
                 return false
