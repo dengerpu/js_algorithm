@@ -56,7 +56,7 @@
         function rgb2hex2(sRGB) {
             try {
                 return eval(sRGB)
-            } catch {
+            } catch(err) {
                 return sRGB
             }
         }
@@ -69,7 +69,10 @@
             bH = bH.length == 1 ? '0' + bH : bH
             return '#' + rH + gH + bH
         }
-        console.log(rgb2hex2('rgb(255,255,255)'))
+
+        function abc() { return rgb2hex('rgb(255,255,100)') }
+        console.log(abc())
+        console.log(rgb2hex2('rgb(255,255,100)'))
     </script>
 </body>
 
