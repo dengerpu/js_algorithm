@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function cssStyle2DomStyle(sName) {
+            // 填写JavaScript
+            if(sName.startsWith('-')) {
+                sName = sName.slice(1)
+            }
+            let str = ''
+            for(let i = 0; i < sName.length; i++) {
+                if(sName[i] != '-') {
+                    str += sName[i]
+                } else {
+                    str += sName[i + 1].toUpperCase()
+                    i++
+                }
+            }
+            return str
+        }
+
+        function cssStyle2DomStyle2(sName) {
+            return sName.replace(/^-/, '').replace(/-([a-z])/g,(_,$) => {
+                // _代表匹配到的字符串。比如font-size  _就是-s
+                // $代表捕获组的内容
+                return $.toUpperCase()
+            })
+        }
+        console.log(cssStyle2DomStyle2('font-size'))
+    </script>
+</body>
+
+</html>
