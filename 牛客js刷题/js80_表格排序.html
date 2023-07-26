@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body,
+        html {
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            color: #000000;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        thead {
+            background: #3d444c;
+            color: #ffffff;
+        }
+
+        td,
+        th {
+            border: 1px solid #e1e1e1;
+            padding: 0;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 填写标签 -->
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>price</th>
+                <th>sales</th>
+            </tr>
+        </thead>
+        <tbody id="jsList">
+            <tr>
+                <td>1</td>
+                <td>10.0</td>
+                <td>800</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>30.0</td>
+                <td>600</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>20.5</td>
+                <td>700</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>40.5</td>
+                <td>500</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>60.5</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>50.0</td>
+                <td>400</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>70.0</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>80.5</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        // 填写JavaScript
+        function sort(type, order) {
+            const tbody = document.getElementById('jsList')
+            const trs = document.querySelectorAll('#jsList tr')
+            let data = []
+            for(let i = 0; i < trs.length; i++) {
+                let tds = Array.from(trs[i].childNodes)
+                data.push({
+                    id: tds[0].innerHTML,
+                    price: tds[1].innerHTML,
+                    sales: tds[2].innerHTML,
+                    tr: trs[i]
+                })
+            }
+            data.sort((a, b) => {
+                if(order === 'asc') return a[type] - b[type]
+                else if (order === 'desc') return b[type] - a[type]
+                else return 0
+            })
+            tbody.innerHTML = ''
+            data.forEach(item => {
+                tbody.appendChild(item.tr)
+            })
+            return data
+        }
+        
+
+        function sort2(type, order) {
+            // type为id、price或者sales;   asc表示升序，desc为降序
+            // 1.获取父节点
+            let tbody = document.getElementById('jsList')
+            // 2.获取数据的行数
+            let len = tbody.children.length
+            // 3.遍历获取数组
+            let domArr = []
+            let typeNum = type == 'id' ? 0 : type == 'price' ? 1 : type == 'sales' ? 2 : ''
+            for(let i = 0; i < len; i++) {
+                domArr.push(tbody.children[i])
+            }
+            // 4.重新排列
+            domArr.sort((a, b) => {
+                // a, b代表  tr
+                if(order === 'desc') {
+                    return (b.children[typeNum].innerHTML - a.children[typeNum].innerHTML)
+                } else if(order === 'asc') {
+                    return (a.children[typeNum].innerHTML - b.children[typeNum].innerHTML)
+                } else {
+                    return 0
+                }
+            })
+            domArr.forEach(item => {
+                tbody.appendChild(item)
+            })
+        }
+        sort2('price', 'desc')
+    </script>
+</body>
+
+</html>
