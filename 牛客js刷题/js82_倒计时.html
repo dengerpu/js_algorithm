@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 填写样式 */
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 填写标签 -->
+    <div id="jsCountdown">
+        <span>01天</span>
+        <span>02:</span>
+        <span>03:</span>
+        <span>04</span>
+    </div>
+    <script type="text/javascript">
+        // 填写JavaScript
+        function second(second) {
+            return {
+                day: parseInt(second / 60 / 60 / 24),
+                hour: parseInt(second / 60 / 60) % 24,
+                min: parseInt(second / 60) % 60,
+                second:  second % 60
+            }
+        }
+        function render(data) {
+            function padding(param) {
+                if(param < 10) {
+                    return '0' + param
+                } else {
+                    return param
+                }
+            }
+            const div = document.getElementById('jsCountdown')
+            div.innerHTML = `
+            <span class="${data.day == 0 ? 'hide' : ''}">${padding(data.day)}天</span>
+            <span>${padding(data.hour)}:</span>
+            <span>${padding(data.min)}:</span>
+            <span>${padding(data.second)}</span> 
+            `
+        }
+        const obj = second(1200000)
+        render(obj)
+
+        function abc() {     
+            var data = second(90061);     
+            console.log(data)
+            var result = data.day === 1 && data.hour === 1 && data.min === 1 && data.second === 1;     return result;  
+            return result; 
+        }
+        console.log(abc())
+    </script>
+</body>
+
+</html>
