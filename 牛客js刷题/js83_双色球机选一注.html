@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .main .balls {
+            width: 450px;
+            padding: 30px 10px 10px;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .main .balls:after {
+            content: '\20';
+            clear: both;
+            display: block;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .main .balls span {
+            position: absolute;
+            left: 12px;
+            top: 5px;
+            font-size: 13px;
+        }
+
+        .main b {
+            float: left;
+            width: 30px;
+            height: 30px;
+            font-size: 15px;
+            background: #FFF;
+            border: 1px solid;
+            border-radius: 50%;
+            line-height: 30px;
+            text-align: center;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .main .red .active {
+            background: #f56c6c;
+            color: #FFF;
+        }
+
+        .main .blue .active {
+            background: #3a8ee6;
+            color: #FFF;
+        }
+
+        .main .red {
+            background: #feeff0;
+        }
+
+        .main .red b {
+            border-color: #f56c6c;
+        }
+
+        .main .blue {
+            background: #ecf8ff;
+        }
+
+        .main .blue b {
+            border-color: #3a8ee6;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 填写标签 -->
+    <div class="main">
+        <div class="balls red">
+            <span>红球</span>
+            <div class="balls-wp">
+                <b>01</b>
+                <b>02</b>
+                <b>03</b>
+                <b>04</b>
+                <b>05</b>
+                <b>06</b>
+                <b>07</b>
+                <b>08</b>
+                <b>09</b>
+                <b>10</b>
+                <b>11</b>
+                <b>12</b>
+                <b>13</b>
+                <b>14</b>
+                <b>15</b>
+                <b>16</b>
+                <b>17</b>
+                <b>18</b>
+                <b>19</b>
+                <b>20</b>
+                <b>21</b>
+                <b>22</b>
+                <b>23</b>
+                <b>24</b>
+                <b>25</b>
+                <b>26</b>
+                <b>27</b>
+                <b>28</b>
+                <b>29</b>
+                <b>30</b>
+                <b>31</b>
+                <b>32</b>
+                <b>33</b>
+            </div>
+        </div>
+        <div class="balls blue">
+            <span>蓝球</span>
+            <div class="balls-wp">
+                <b>01</b>
+                <b>02</b>
+                <b>03</b>
+                <b>04</b>
+                <b>05</b>
+                <b>06</b>
+                <b>07</b>
+                <b>08</b>
+                <b>09</b>
+                <b>10</b>
+                <b>11</b>
+                <b>12</b>
+                <b>13</b>
+                <b>14</b>
+                <b>15</b>
+                <b>16</b>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // 填写JavaScript
+        console.log(randomFn());
+
+        function randomFn() {
+            let redballs = document.querySelectorAll('.red .balls-wp b')
+            let blueballs = document.querySelectorAll('.blue .balls-wp b')
+            let reddiv = document.querySelector('.red .balls-wp')
+            let bluediv = document.querySelector('.blue .balls-wp')
+            let red = [] // 存储红球
+            let redDoms = [] // 存储红球对应的dom
+            // 随机生成6个颜色的红球
+            while(red.length < 6) {
+                let num = Math.floor(Math.random() * (redballs.length)) + 1
+                if(!red.includes(num)) {
+                    red.push(num)
+                    let redDom = redballs[num - 1]
+                    redDom.classList.add('active')
+                    redDoms.push(redDom)
+                }
+            }
+            let blue = Math.floor(Math.random() * (blueballs.length)) + 1
+            let blueDom = blueballs[blue - 1]
+            blueDom.classList.add('active')
+            // 选中的红球，从大到大排列，（插入的时候就是从小到大的顺序）
+            redDoms = redDoms.sort((a, b) => b.innerHTML - a.innerHTML)
+            for(let i = 0; i < 6; i++) {
+                let redballs = document.querySelectorAll('.red .balls-wp b')
+                // insertBefore是如果原来是子节点则将子节点移动到对应节点前面(删除原本位置)
+                reddiv.insertBefore(redDoms[i], redballs[0])
+            }
+            bluediv.insertBefore(blueDom, blueballs[0])
+
+            return redDoms.map(item => item.innerHTML).reverse().join(',') + '|' + blueDom.innerHTML
+        }
+    </script>
+</body>
+
+</html>
