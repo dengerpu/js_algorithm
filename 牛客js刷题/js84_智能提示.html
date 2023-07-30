@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .search {
+            position: relative;
+        }
+
+        .js-input {
+            width: 450px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 16px;
+            padding: 8px;
+            border: 1px solid #cccccc;
+            outline: none;
+        }
+
+        .js-suggest {
+            width: 466px;
+            font-size: 14px;
+            border: 1px solid #cccccc;
+            background: #ffffff;
+            position: absolute;
+            left: 0;
+            top: 39px;
+        }
+
+        .js-suggest.hide {
+            display: none;
+        }
+
+        .js-suggest ul {
+            display: block;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .js-suggest ul li {
+            color: #000;
+            font: 14px arial;
+            line-height: 25px;
+            padding: 0 8px;
+            position: relative;
+            cursor: default;
+        }
+
+        .js-suggest ul li:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div><input type="text" class="js-input" value="垃"></div>
+        <div class="js-suggest">
+            <ul>
+                <li>根据输入框的值</li>
+                <li>从给定字符串数组中筛选出匹配的数据，依次显示在li节点中</li>
+                <li>如果没有匹配的数据，请移除所有li节点，并隐藏.js-suggest节点</li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function suggest(items) {
+            const input = document.getElementsByClassName('js-input')[0]
+            const tipDiv = document.getElementsByClassName('js-suggest')[0]
+            const tipUl = document.querySelectorAll('.js-suggest ul')[0]
+            let len = tipUl.children.length
+            // 清空ul里面的内容
+            for(let i = 0; i < len; i++) {
+                let li = document.querySelector('li')
+                tipUl.removeChild(li)
+            }
+            let value = input.value.trim() // 输入的内容
+            if(!value) {
+                tipDiv.classList.add('hide')
+                return 
+            }
+            // 构造reg的时候，ipt如果是特殊字符，要转义
+            let reg = ''
+            const regKey = ['(', ')', '.', '?', '^', '/', '\\', '*', '[', ']', '|', '+', '{', '}', '$']
+            for(i of value) {
+                if(regKey.includes(i)) {
+                    i = '\\' + i
+                }
+                reg += i + '.*?'
+            }
+            reg = new RegExp(reg)
+            for(item of items) {
+                if(reg.test(item)) {
+                    let tip = document.createElement('li')
+                    tip.innerHTML = item
+                    tipUl.appendChild(tip)
+                }
+            }
+            const len2 = tipUl.children.length
+            if(len2 == 0) { // 说明没有匹配的数据
+                tipDiv.classList.add('hide')
+            } else {
+                tipDiv.classList.remove('hide')
+            }
+            
+        }
+        // suggest('123254545456我是小垃圾')
+
+        function test () { 
+            var ipt = document.querySelector('.js-input'); 
+            var dv = document.querySelector('.js-suggest'); 
+            var ul = document.querySelector('ul'); 
+            ipt.value = '01'; 
+            suggest(['01', '2', '3', '4', '5', '6', '7', '8', '9', '0', '10', '110']); 
+            var li = ul.children; 
+            var result = dv.className.indexOf('hide') >= 0; 
+            console.log(result)
+            // result = result && li.length === 0; 
+            // return result; 
+        }
+        console.log(test())
+    </script>
+</body>
+
+</html>
