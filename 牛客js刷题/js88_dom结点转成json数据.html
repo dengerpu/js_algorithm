@@ -22,37 +22,37 @@
     </div>
     <script type="text/javascript">
         function dom2json() {
-            const container = document.getElementById('jsContainer')
-            return createObj(container)
+            const container = document.getElementById('jsContainer');
+            return createObj(container);
         }
 
         function createObj(element) {
             // 创建一个空的对象
-            const obj = {}
+            const obj = {};
             // 获取标签名
-            obj.tag = element.nodeName.toLowerCase().replace('#', '')
+            obj.tag = element.nodeName.toLowerCase().replace('#', '');
             // 如果是文本
-            if (obj.tag === 'text') {
-                obj.content = element.data.trim()
+            if (obj.tag == 'text') {
+                obj.content = element.data.trim();
             }
-            obj.attributes = {}
+            obj.attributes = {};
             if (element.attributes) {
                 for (let i = 0; i < element.attributes.length; i++) {
-                    const { name, value } = element.attributes[i]
-                    obj.attributes[name] = value
+                    const { name, value } = element.attributes[i];
+                    obj.attributes[name] = value;
                 }
             }
             // 对孩子进行过滤，去除没有内容的text
             const childArr = Array.from(element.childNodes).filter(item => {
-                return item.nodeName === '#text' && item.data.trim() !== '' || item.nodeName !== '#text'
+                return item.nodeName === '#text' && item.data.trim() !== '' || item.nodeName !== '#text';
             })
-            obj.children = []
+            obj.children = [];
             if (childArr.length) {
                 for (let i = 0; i < childArr.length; i++) {
-                    obj.children[i] = createObj(childArr[i])
+                    obj.children[i] = createObj(childArr[i]);
                 }
             }
-            return obj
+            return obj;
         }
         function abc() {
             var el = document.getElementById('jsContainer'); (el || {}).innerHTML = '<em class="a1" data-class="a2"></em>';
