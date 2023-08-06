@@ -51,7 +51,6 @@
 
         function fInitHtml() {
             var that = this;
-            console.log(that.options)
             // 请补全代码，拼接html字符串
             var sHtml = '<div class="checkgroup radius">';
             for(let i = 0; i < that.options.length; i++) {
@@ -72,35 +71,53 @@
         }
 
         function fToggleEl(item) {
+            // item为点击的元素
             // 根据当前是单选还是多选，以及当前元素是否选中，高亮/取消���亮指定的选项dom元素
             var that = this;
             if (that.isSelected(item)) {
-                // 请补全代码
+                // 如果点击的元素处于高亮状态，则取消高丽
+                item.classList.remove('selected')
             } else if (that.isMultiple) {
-                // 请补全代码
+                // 多选的情况
+                item.classList.add('selected')
             } else {
-                // 请补全代码
+                const items = document.querySelectorAll('.item')
+                Array.from(items).forEach(item => {
+                    if(item.classList.contains('selected')) {
+                        item.classList.remove('selected')
+                    }
+                })
+                item.classList.add('selected')
             }
         }
 
         function fIsSelected(item) {
             // 请补全代码，判断item是否选中
-            return item;
+            return item.classList.contains('selected');
         }
 
         function fVal(values) {
             var that = this;
             if (arguments.length === 0) {
                 // 请补全代码，获取高亮的选项元素
-                var items = null;
+                var items = document.querySelectorAll('.selected');
                 // 请补全代码，获取高亮的选项元素的data-val
-                var result = [];
+                var result = Array.from(items).map(item => {
+                    return item.getAttribute('data-val')
+                });
                 return result;
             }
             !that.isMultiple && values.length > 1 && (values.length = 1);
             // 请补全代码，获取所有的选项元素
-            var items = null;
+            var items = items = that.renderTo.childNodes[0].childNodes;
             // 请补全代码，在指定元素上加上高亮的class
+            Array.from(items).forEach(item => {
+                if(values.includes(item.getAttribute('data-val'))) {
+                    item.classList.add('selected')
+                } else {
+                    item.classList.remove('selected')
+                }
+            })
         }
 
         // var options = [{text: '选项a', value: 'a'}, {text: '选项b', value: 'b'}, {text: '选项c', value: 'c'}, {text: '选项d', value: 'd'}];
@@ -117,11 +134,14 @@
                 text: 'b',
                 value: '2'
             }]);
-            var el = dv.getElementsByClassName('checkgroup');
-            var result = !!(el.length === 1 && el[0].classList.contains('radius'));
+            var el = dv.getElementsByClassName('checkgroup')[0];
+            item.val(['1']);
+            item.val(['2']);
+            item.val(['1']);
+            var result = !!(el.getElementsByClassName('selected').length === 1);
             return result;
         }
-        abc()
+        console.log(abc())
     </script>
 </body>
 
