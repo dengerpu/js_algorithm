@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <li data-id="1" data-abc-id="2">1</li>
+    <script>
+        const li = document.querySelector('li')
+        console.log(li.dataset.id)
+        console.log(li.dataset.abcId)
+
+        //赋值
+        li.dataset.id = "111";//111
+        li.dataset.abcId--;//1
+        
+        //新增data属性
+        li.dataset.id2 = "100";//100
+        
+        //删除，设置成null，或者delete
+        li.dataset.id2 = null;//null
+        delete li.dataset.id2;//undefind
+    </script>
+</body>
+</html>
