@@ -17,6 +17,16 @@
         let content = p.innerHTML
         content = content.replaceAll('牛客网', '<strong>牛客网</strong>')
         p.innerHTML = content
+
+
+        function abc() {
+            var a = document.getElementsByTagName('strong').length;
+            if (a === 0) {
+                a = document.getElementsByTagName('b').length;
+            };
+            return a;
+        }
+        console.log(abc())
     </script>
 </body>
 
