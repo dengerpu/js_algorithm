@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function _typeof(value) {
+            console.log(Object.prototype.toString.call(value))
+            // 检测所有数据类型
+            // [object number] 从第8位截取到最后一位
+            return Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
+            // 检测基本数据类型
+            // return typeof(value);
+        }
+        console.log(_typeof(1))
+    </script>
+</body>
+
+</html>
