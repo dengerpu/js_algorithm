@@ -10,12 +10,10 @@
 
 <body>
     <script>
-        function _splice(left, right) {
+        function _factorial(number) {
             // 补全代码
-            // return '' + left + right
-            // return left.toString() + right.toString()
-            // return String(left) + String(right)
-            return `${left}${right}`
+            if(number == 1) return 1
+            else return number * _factorial(number - 1)
         }
     </script>
 </body>
