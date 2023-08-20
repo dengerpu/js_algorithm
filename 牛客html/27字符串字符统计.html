@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 填写样式 */
+    </style>
+</head>
+
+<body>
+    <!-- 填写标签 -->
+    <script type="text/javascript">
+        // 填写JavaScript
+        function count(str) {
+            let obj = {}
+            for(let item of str) {
+                if(item === " ") continue
+                // obj.hasOwnProperty(item)
+                if(item in obj) {
+                    obj[item] += 1
+                } else {
+                    obj[item] = 1
+                }
+            }
+            return obj
+        }
+        let str = 'hello world'
+        console.log(count(str))
+    </script>
+</body>
+
+</html>
