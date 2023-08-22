@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.通过循环将数组中的元素往后移一位
+        function _unshift(array, value) {
+            let len = array.length
+            for(let i = len -1; i >= 0; i--) {
+                array[i + 1] = array[i]
+            }
+            array[0] = value
+        }
+        // 2. ES6的展开运算符,本题是要求用ES5
+        function _unshift2(array, value) {
+            const temp = [value, ...array]
+            array.length = 0   // 将数组置空，不能使用 array = []
+            temp.forEach(item => {
+                array.push(item)
+            })
+            return array
+        }
+        // 3.数组拼接,of方法可以将一组参数转化成数组。of方法也是ES6才支持的。
+        function _unshift3(array, value) {
+            const temp = Array.of(value).concat(array)
+            array.length = 0   // 将数组置空，不能使用 array = []
+            temp.forEach(item => {
+                array.push(item)
+            })
+            return array
+        }
+        // 4.万金油splice
+        function _unshift3(array, value) {
+            array.splice(0, 0, value)
+            return array
+        }
+        // 5.unshift方法
+        function _unshift4(array,value) {
+            array.unshift(value)
+            return array
+        }
+    </script>
+</body>
+
+</html>
