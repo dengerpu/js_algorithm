@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function _floor(number) {
+            // // floor()
+            // return Math.floor(number) 
+
+            // parseInt()
+            // return parseInt(number) 
+
+            // 两次取反
+            // return ~~number
+
+            // Math.trunc() 方法会将数字的小数部分去掉，只保留整数部分。
+            // return Math.trunc(number)
+
+            // split方法
+            // let arr = number.toString().split('.')
+            // return +arr[0]
+
+            // 右移
+            return number >> 0
+
+            // 求余
+            return number-number%1;
+        }
+    </script>
+</body>
+</html>
