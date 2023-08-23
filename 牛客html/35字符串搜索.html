@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        // 方法1 ---------- search()   
+        function _search(string, value) {
+            let reg = new RegExp(value)
+            return string.search(reg) != -1
+        }
+
+        // 方法2 ----------- indexOf()
+        function _search2(string, value) {
+            return string.indexOf(value) != -1
+        }
+
+        // 方法3 ----------- match()
+        function _search3(string, value) {
+            let reg = new RegExp(value)
+            let match = string.match(reg)
+            return (match === null) || (match === []) ? false : true
+        }
+
+        // 方法4 --------- split() + some()
+        function _search4(string, value) {
+            return string.split('').some(item => item == value)
+        }
+
+        // 方法5 ------------- RegExp + test()
+        //  与 search() 方法差别在于 test() 返回一个布尔值，而 search() 返回索引（如果找到）或者-1（如果没找到）
+        function _search5(string, value) {
+            let reg = new RegExp(value)
+            return reg.test(string)
+        }
+
+        // 方法6 --------- includes
+        // String.prototype.includes() 方法用于判断一个字符串是否包含 在 另一个字符串中，根据情况返回 true 或 false。（区分大小写）
+    // Array.prototype.includes() 方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回 false
+        function _search6(string, value) {
+            return string.includes(value)
+        }
+    </script>
+</body>
+
+</html>
