@@ -17,6 +17,13 @@
 
              //方法二：提示：如需防止向上冒泡到父元素并向下被子元素捕获，使用 stopPropagation() 方法。
             e.stopPropagation();
+
+            //方法三：preventDefault() 用于取消事件的默认行为，
+            //如果a标签的默认事件是href跳转，加了就不会跳转了
+            e.preventDefault();
+
+            //方法四：事件处理过程中，阻止了事件冒泡，也阻止了默认行为，相当于会直接调用 preventDefault和stopPropapation
+            return false;
         })
     </script>
 </html>
