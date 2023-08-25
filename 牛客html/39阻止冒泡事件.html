@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta charset=utf-8>
+    </head>
+    <body>
+        <ul>
+            <li>nowcoder</li>
+        </ul>
+    </body>
+    <script type="text/javascript">
+        // 补全代码
+        const li = document.getElementsByTagName(li)[0]
+        li.addEventListener('click', function(e){
+
+            //方法一：cancelBubble 属性防止事件流冒泡到父元素。
+            e.cancelBubble=true;
+
+             //方法二：提示：如需防止向上冒泡到父元素并向下被子元素捕获，使用 stopPropagation() 方法。
+            e.stopPropagation();
+        })
+    </script>
+</html>
