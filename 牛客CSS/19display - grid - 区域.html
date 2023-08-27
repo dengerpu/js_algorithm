@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            section {
+                text-align: center;
+                display: grid;
+                grid-template-rows: repeat(3, 100px);
+                grid-template-columns: 100px 100px 100px;
+                grid-template-areas: 'a b c''d e f''g h i'
+            }
+            article {
+                height: 100px;
+                border: 1px solid black;
+            }
+            article:nth-child(1) {
+                grid-area: e;
+            }
+        </style>
+    </head>
+    <body>
+    	<section>
+            <article>1</article>
+            <article>2</article>
+            <article>3</article>
+            <article>4</article>
+            <article>5</article>
+            <article>6</article>
+            <article>7</article>
+            <article>8</article>
+            <article>9</article>
+        </section>
+    </body>
+</html>
