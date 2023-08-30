@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        // 利用Set
+        const _deleteRepeat = array => {
+            const set = new Set(array)
+            return [...set]
+        }
+        // set + Array.from方法（可浅拷贝一个可迭代对象）
+        const _deleteRepeat2 = array => {
+            const set = new Set(array)
+            return Array.from(set)
+        }
+        // 声明一个空数组，用includes寻找如果没有该元素则加入新数组
+        const _deleteRepeat3 = array => { 
+            const newArr = []
+            array.forEach(item => {
+                if(!newArr.includes(item)) {
+                    newArr.push(item)
+                }
+            })
+            return newArr
+        }
+        // 利用reduce方法和includes
+        const _deleteRepeat4 = array => { 
+            return array.reduce((prev, curr) => {
+                if(!prev.includes(curr)) {
+                    prev.push(curr)
+                }
+                return prev
+            },[])
+        }
+        //hasOwnProperty方法可以判断类型两个{},{}
+        const _deleteRepeat5 = array => { 
+            const obj = {}
+            return array.filter(item => {
+                // //  typeof {}+{}为object[object Object]，判断有没有空对象，已经有的话return false，没有就作为对象的属性加进去，值为true   
+                return obj.hasOwnProperty(typeof item + item) ? false : obj[typeof item + item] = true
+            })
+        }
+        // 过滤器filter方法+indexof()方法，indexof会返回第一个找到的索引，如果当前数值之前出现过，
+        //    则indexof返回的索引恒为之前的那个数与当前数值的索引不一致，故可以去重
+        const _deleteRepeat6 = array => { 
+            return array.filter((item,index) => {
+                return array.indexOf(item) == index
+            })
+        }
+        console.log(_deleteRepeat2([-1,1,2,2]))
+    </script>
+</body>
+
+</html>
