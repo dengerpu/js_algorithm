@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 填写样式 */
+    </style>
+</head>
+
+<body>
+    <!-- 填写标签 -->
+    <script type="text/javascript">
+        // 回溯算法，解决全排列问题
+        const _permute = string => {
+            var path = []
+            var result = []
+            var strs = string.split('')
+            var used = new Array(strs.length).fill(0)
+            const backTrack = function backTracking(strs, used) {
+                if(path.length == strs.length) {
+                    result.push(path.slice().join(''))
+                    // result.push(path.slice())
+                    return
+                }
+                for(let i = 0; i < strs.length; i++) {
+                    if(used[i] == 1) continue; // 说明已经获取过了
+                    path.push(strs[i])
+                    used[i] = 1
+                    backTracking(strs, used);
+                    path.pop()
+                    used[i] = 0
+                }
+            }
+            backTrack(strs, used)
+            return result
+        }
+
+        // 方法二，和上面一样，只是写法简单一些
+        const _permute2 = string => {
+            const res = []
+            const backTrack = path => {
+                if(path.length == string.length) {
+                    res.push(path)
+                    return
+                }
+                for(let item of string) {
+                    if(path.includes(item)) continue
+                    backTrack(path + item)
+                }
+            }
+            backTrack('')
+            return res
+        }
+
+        // 方法三
+        const _permute3 = string => {
+            if(string.length == 1) {
+                return [string]
+            }
+            const result = []
+            for(let s of string) {
+                const arr = string.split('').filter(str => str != s)
+                _permute3(arr.join('')).forEach(item => {
+                    result.push(s + item)
+                })
+            }
+            return result
+        }
+     
+        
+        console.log(_permute('abc'))
+
+        let a = []
+        let b = [1,2]
+        let c = [1,3,4]
+        a.push(b)
+        a.push(c)
+        console.log(a)
+
+    </script>
+</body>
+
+</html>
