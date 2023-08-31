@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 填写样式 */
+    </style>
+</head>
+
+<body>
+    <!-- 填写标签 -->
+    <script type="text/javascript">
+        // 填写JavaScript
+        const _instanceof = (target, Fn) => {
+            let proto = target.__proto__
+            while(true) {
+                if(proto === Fn.prototype) return true
+                if(proto == null) return false
+                proto = proto.__proto__
+            }
+        }
+    </script>
+</body>
+
+</html>
