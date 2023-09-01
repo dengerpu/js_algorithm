@@ -13,7 +13,7 @@
     <script type="text/javascript">
         // 填写JavaScript
         Array.prototype._filter = function (Fn) {
-            if(typeof Fn != 'function') return
+            if(typeof Fn !== 'function') return
             const array = this
             const newArray = []
             for(let i = 0; i < array.length; i++) {
