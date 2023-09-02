@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 填写样式 */
+    </style>
+</head>
+
+<body>
+    <!-- 填写标签 -->
+    <script type="text/javascript">
+        Function.prototype._call = function(target = window) {
+            target['fn'] = this
+            const result = target['fn']([...arguments].shift())
+            delete target['fn']
+            return result
+        }
+    </script>
+</body>
+
+</html>
