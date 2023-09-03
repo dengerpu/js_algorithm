@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        // 补全代码
+        Function.prototype._bind = function (target, ...arguments1) {
+            if(typeof this !== 'function') {
+                throw new TypeError(this, '必须是一个函数');
+            }
+            const self = this; // fn.bind(), 那么this就是fn
+            // bind不是立即执行的，需要返回一个函数
+            const _bindFun = function() {
+                const newArgs = Array.prototype.slice.call(arguments);
+                // // 执行原函数，借助apply把this指向修改到target。这里使用instanceof判断是为了兼容new的情况，将new优先级提升。
+                return self.apply(this instanceof self ? this : target, arguments1.concat(newArgs));
+            }
+            _bindFun.protopype = this.protopype;
+            return _bindFun;
+        }
+
+        Function.prototype._bind = function (target, ...arguments1) {
+            thisArg = target === null || target === undefined ? window : Object(target)
+            thisArg.fn = this
+            return (...newArgs) => {
+                const allArgs = [...arguments1, ...newArgs]
+                return thisArg.fn(...allArgs)
+            }
+        }
+
+        function a() {
+            console.log(this)
+        }
+        a._bind({x: 1})()
+    </script>
+</body>
+
+</html>
