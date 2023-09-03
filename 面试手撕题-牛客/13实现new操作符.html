@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        const _new = function () {
+            // 补全代码
+            const object1 = {}
+            const Fn = [...arguments].shift(); // 取出第一个参数
+            object1.__proto__ = Fn.prototype
+            const object2 = Fn.apply(object1, arguments)
+            return object2 instanceof Object ? object2 : object1
+        }
+    </script>
+</body>
+
+</html>
