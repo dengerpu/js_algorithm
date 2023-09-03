@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        const _objectFreeze = object => {
+            if(typeof object !== 'object' || object == null) {
+                throw new TypeError(object,'不是一个对象')
+            }
+            const keys = Object.getOwnPropertyNames(object);
+            const symbols = Object.getOwnPropertySymbols(object);
+            [...keys, ...symbols].forEach(key => {
+                Object.defineProperty(object, key, {
+                    configurable: false,
+                    writable: false
+                })
+            });
+            Object.preventExtensions(object);
+        }
+    </script>
+</body>
+
+</html>
