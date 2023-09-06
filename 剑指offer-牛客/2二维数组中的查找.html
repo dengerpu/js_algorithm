@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Find(target, array) {
+            let n = array.length; // 行
+            let m = array[0].length // 列
+            let x = n - 1, y = 0;
+            while(x >= 0 && y < m) {
+                let temp = array[x][y];
+                if(temp == target) return true;
+                else if(temp > target) x--;
+                else y++;
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>
