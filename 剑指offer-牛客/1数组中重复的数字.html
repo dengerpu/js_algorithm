@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function duplicate(numbers) {
+            const set = new Set();
+            for(let i = 0; i < numbers.length; i++) {
+                let item = numbers[i]
+                if(set.has(item)) {
+                    return item
+                } else {
+                    set.add(item)
+                }
+            }
+            return -1;
+        }
+        // 法二：数组重排
+        // function duplicate2(numbers) {
+        //     let i = 0, n = numbers.length;
+        //     while(i < n) {
+        //         if(numbers[i] === i) { // 第i个元素的位置就是i
+        //             i++;
+        //             continue;
+        //         }else {
+        //             if(numbers[i] == numbers[numbers[i]]) {
+        //                 return numbers[i]
+        //             }else {
+        //                 let item = numbers[i];
+        //                 numbers[i] = numbers[numbers[i]];
+        //                 numbers[numbers[i]] = item;
+        //             }
+        //         }
+        //     }
+        //     return -1;
+        // }
+        const numbers = [2,3,1,0,2,5,3]
+        console.log(duplicate2(numbers))
+    </script>
+</body>
+
+</html>
