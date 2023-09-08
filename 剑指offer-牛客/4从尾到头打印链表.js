@@ -1,4 +1,8 @@
-function printListFromTailToHead(head)
-{
-    // write code here
+function printListFromTailToHead(head){
+    let res = []
+    while(head) {
+        res.unshift(head.val)
+        head = head.next
+    }
+    return res
 }
