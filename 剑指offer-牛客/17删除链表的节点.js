@@ -3,11 +3,10 @@ function ListNode(x) {
     this.next = null;
 }
 
-// 这种删除
+
 function deleteNode(head, val) {
     // write code here
     if(head.val == val) return head.next;
-
     let p = head;
     let q = head.next;
     while(q != null) {
@@ -27,5 +26,12 @@ function deleteNode(head, val) {
 
 function deleteNode2(head, val) {
     if(head.val == val) return head.next;
-
+    let curr = head;
+    let prev = null;
+    while(curr.val != val) {
+        prev = curr;
+        curr = curr.next
+    }
+    prev.next = curr.next;
+    return head;
 }
