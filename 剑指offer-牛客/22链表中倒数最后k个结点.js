@@ -28,7 +28,6 @@ function ListNode(x){
         fast = fast.next;
     }
     return slow;
-
 }
 module.exports = {
     FindKthToTail : FindKthToTail
